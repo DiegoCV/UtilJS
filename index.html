@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="sinNombre.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+
+		atributo = new Atributo(
+			{
+    			"class" : "footable-visible footable-first-column th",
+    			"colspan" : anchoTabla,
+    			"style" : "color:#FFFFFF; background-color: #616161;" 
+    		}
+    	);
+
+
+    if (conductores.length > 0) {
+        for (let i in conductores) {
+        	var mi_tr = new Component("td", {class:"gradeX footable-even"});
+        	//conductor
+        	mi_tr.setTd({textNode:"Conductor:", class:"footable-visible", colspan:2});
+        	//mi_tr.setTd(atributo);
+			mi_tr.setTd({textNode:"Valor:", class:"footable-visible"});
+            //Valor unitario
+            mi_tr.setTd({textNode:formatearDinero(conductores[i].flete), class:"footable-visible"});
+
+            cont.setComponent(mi_tr);
+        }
+        function setConductores(id_factura) {  			
+			cont = Component.createComponentByElementId("articulosList");	    	
+	    	cont.getTr().setClass("gradeX footable-even");	    
+	    	var mi_td = new Component("td", atributo);	    
+	    	mi_td.setText("Servicio de transporte");	    
+	    	cont.getTr().setComponent(mi_td);
+	    	conductores = getConductoresByFactura(id_factura);
+    if (conductores.length > 0) {
+        for (let i in conductores) {
+            mi_tr = tr("gradeX footable-even");
+            //Conductor
+            mi_tr.appendChild(td("Conductor:", "footable-visible"));
+            mi_td = td(conductores[i].conductor, "footable-visible");
+            mi_td.setAttribute("colspan", 2);
+            mi_tr.appendChild(mi_td);
+            //Valor unitario
+            mi_td = td("Valor:", "footable-visible");
+            mi_td.setAttribute("colspan", 2);
+            mi_tr.appendChild(mi_td);
+            mi_tr.appendChild(td(formatearDinero(conductores[i].flete), "footable-visible"));
+
+            contenedor.appendChild(mi_tr);
+        }
+    } else {
+        mi_tr = tr("gradeX footable-even");
+        mi_td_var = td("Ninguno", "footable-visible");
+        mi_td_var.setAttribute("colspan", anchoTabla);
+        mi_tr.appendChild(mi_td_var);
+        contenedor.appendChild(mi_tr);
+    }
+
+		function setConductores(id_factura) {
+    contenedor = document.getElementById('articulosList');
+    mi_tr = tr("gradeX footable-even");
+    var mi_td = document.createElement("td");
+    mi_td.setAttribute("class", "footable-visible footable-first-column th");
+    mi_td.appendChild(document.createTextNode("Servicio de transporte"));
+    mi_td.setAttribute("colspan", anchoTabla);
+    mi_td.setAttribute("style", " color:#FFFFFF; background-color: #616161  ");
+    mi_tr.appendChild(mi_td);
+    contenedor.appendChild(mi_tr);
+    conductores = getConductoresByFactura(id_factura);
+    if (conductores.length > 0) {
+        for (let i in conductores) {
+            mi_tr = tr("gradeX footable-even");
+            //Conductor
+            mi_tr.appendChild(td("Conductor:", "footable-visible"));
+            mi_td = td(conductores[i].conductor, "footable-visible");
+            mi_td.setAttribute("colspan", 2);
+            mi_tr.appendChild(mi_td);
+            //Valor unitario
+            mi_td = td("Valor:", "footable-visible");
+            mi_td.setAttribute("colspan", 2);
+            mi_tr.appendChild(mi_td);
+            mi_tr.appendChild(td(formatearDinero(conductores[i].flete), "footable-visible"));
+
+            contenedor.appendChild(mi_tr);
+        }
+    } else {
+        mi_tr = tr("gradeX footable-even");
+        mi_td_var = td("Ninguno", "footable-visible");
+        mi_td_var.setAttribute("colspan", anchoTabla);
+        mi_tr.appendChild(mi_td_var);
+        contenedor.appendChild(mi_tr);
+    }
+
+
+    cont = Component.createComponentByElementId("articulosList");
+    	cont.getTr().setClass("gradeX footable-even");
+    	
+    	var mi_td = new Component("td");
+    	mi_td.setObjectStyle(tdStyle);
+
+    	//-----------------
+    	mi_td.setClass("footable-visible footable-first-column th");
+    	mi_td.setColspan(anchoTabla);
+    	mi_td.setStyle("color:#FFFFFF; background-color: #616161;");
+    	//------------------
+
+    	mi_td.setAttributes(
+    		{
+    			"class" : "footable-visible footable-first-column th",
+    			"colspan" : anchoTabla,
+    			"style" : "color:#FFFFFF; background-color: #616161;" 
+    		}
+    	);
+
+    	//-------------------------
+
+    	mi_td.setText("Servicio de transporte");
+
+    	//-------------------------
+
+
+    	cont.getTr().setComponent(mi_td);
+
+
+		/*titulo = new Component("label");
+		titulo2 = Component.label();
+		titulo3 = new Component(titulo2);
+		titulo4 = new Component();
+		console.log(titulo);
+		console.log(titulo2);
+		console.log(titulo3);
+		console.log(titulo4);*/
+}
+	</script>
+</body>
+</html>
